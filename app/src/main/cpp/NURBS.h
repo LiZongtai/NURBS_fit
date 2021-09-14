@@ -6,28 +6,50 @@
 #define NURBS_FIT_NURBS_H
 #include <math.h>
 #include <numeric>
+#include <vector>
+#include "Eigen/Eigen/Dense"
+#include "Eigen/Eigen/Core"
+
 struct InputData
 {
-    float * p;
-    int knotsNum;
+    std::vector<float> data;
+    int pNum;
+    int k;
     int ctrPNum;
     int * w;
+    int xNum;
     double * x;
     float * dataPara;
-    float * knots;
+    double * knots;
 };
 
 class NURBS {
 public:
+    static double * ones(int n);
+    static double * zeros(int n);
+    static double *linspace(double begin, double finish, int number);
     /**
      * Centripetal Method
      * @param inputData
      * @return
      */
-    static float* ParametrizationCM(InputData inputData);
-    static double * ones(int n);
-    static double * zeros(int n);
-    static double *linspace(double begin, double finish, int number);
+    static float* parametrizationCM(InputData inputData);
+    /**
+     *
+     * @param inputData
+     * @return
+     */
+    static double * getKnotsUAVG(InputData inputData);
+    /**
+     *
+     * @param data
+     * @return
+     */
+    static std::vector<float> invCtrP(InputData inputData);
+
+    static double getBasisFcn(double x, double * knots, int i, int k);
+
+    static std::vector<float> fitP(InputData inputData);
 
 private:
     /**

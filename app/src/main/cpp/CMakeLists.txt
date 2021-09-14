@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10.2)
 
 project("nurbs_fit")
 
+include_directories(Eigen)
 
 add_library( # Sets the name of the library.
              native-lib
@@ -18,4 +19,4 @@ target_link_libraries( # Specifies the target library.
 
                        # Links the target library to the log library
                        # included in the NDK.
-                       log )
+                       log)
