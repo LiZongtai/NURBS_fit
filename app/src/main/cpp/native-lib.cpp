@@ -35,7 +35,7 @@ Java_tongji_lzt_nurbs_1fit_MainActivity_NURBS_1fit(JNIEnv *env, jobject thiz, jf
     inputData.data=dataVector;
     inputData.pNum=len/2;
     inputData.k=3;
-    inputData.ctrPNum=13;
+    inputData.ctrPNum=len/2;
     inputData.w=(int* )NURBS::ones(inputData.ctrPNum);
     inputData.xNum=100;
     inputData.x=NURBS::linspace(0,1,inputData.xNum);

@@ -201,17 +201,17 @@ std::vector<float> NURBS::fitP(InputData inputData) {
 //        }
         ctrPM(i,0) = data[2*i];
         ctrPM(i,1) =  data[2*i+1];
-        LOGE("ctrP[%d][0]: %lf, ctrP[%d][1]: %lf", i, i, ctrPM(i,0) ,ctrPM(i,1));
-        LOGE("data[%d][0]: %lf, data[%d][1]: %lf", i, i, data[2*i] ,data[2*i+1]);
     }
     Eigen::MatrixXd Q(xNum, 2);
     Q=N*ctrPM;
+    std::vector<float> Q_vector;
     for (int i = 0; i < Q.rows(); i++) {
         for (int j = 0; j < Q.cols(); j++) {
-            LOGE("Q[%d][%d]: %lf", i, j, Q(i, j));
+//            LOGE("Q[%d][%d]: %lf", i, j, Q(i, j));
+        Q_vector.push_back((float)Q(i,j));
         }
     }
-    std::vector<float> Q_vector(Q.data(),Q.data() + Q.rows() * Q.cols());
+
     return Q_vector;
 }
 
